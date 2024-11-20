@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    {% block contenido %}
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Nombre Tarea</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in dato %}
+                <tr>
+                    <td>{{ i.nombre }}</td>
+                    {% if i.estado == 0 %}
+                        <td style="color: greenyellow;">{{i.get_estado_display }}</td>
+                    {% elif i.estado == 1 %}
+                        <td style="color: rgb(251, 0, 0);"><del>{{i.get_estado_display }}</del></td>
+                    {% else %}        
+                        <td style="color: rgb(4, 0, 255);">{{i.get_estado_display }}</td>
+                    {% endif %}
+                    </tr>
+            {% endfor %}
+        </tbody>
+        
+    </table>
+    <a class="btn btn-success" href="{% url 'crear_tarea' %}">Agregar Tarea</a>
+    {% endblock %}
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

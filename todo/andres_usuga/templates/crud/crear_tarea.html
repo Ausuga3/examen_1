@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+<h1>aqui creas tu tarea</h1>
+<form action="#" method="post">
+    {% csrf_token %}
+    <div class="col">
+        <label for="nombre">Nombre Tarea</label>
+        <input type="text" name="nombre" class="form-control">
+    </div>
+    <div class="col">
+        <label for="estado">Estado</label>
+        <select name="estado" class="form-select">
+            <option value="0">Nuevas</option>
+            <option value="1">Terminadas</option>
+            <option value="2">Eliminadas</option>
+        </select>
+    </div>
+    <div class="form-control">
+        <button class="btn btn-success">Agregar</button>
+    </div>
+</form>
+{% endblock %}
